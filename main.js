@@ -13,6 +13,6 @@ client.on("ready", () => require("./events/ready.js")(client));
 client.on("message", msg => require("./events/message.js")(client, msg));
 client.on("guildMemberAdd", member => require("./events/guildMemberAdd.js")(client, member));
 
-client.login(TOKEN);
+client.login(process.env.TOKEN);
 client.on("error", console.error);
 client.on("warn", console.warn);
