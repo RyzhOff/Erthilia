@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "discord.js": "discordjs/discord.js"
-  }
+  },
+  "name": "erthilia",
+  "version": "0.1.0",
+  "description": "Erthilia Discord",
+  "main": "main.js",
+  "repository": "https://github.com/RyzhOff/Erthilia.git",
+  "author": "RyzhOff <ryzhofficielmc@gmail.com>",
+  "license": "MIT"
 }
