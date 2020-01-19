@@ -1,15 +1,18 @@
-const { Client } = require("discord.js");
+const { Client, Collection } = require("discord.js");
 const { TOKEN, PREFIX } = require("./config");
 const client = new Client({ disableEveryone: true });
 
-client.on("ready", () => {
-  console.log("Je suis prêt !");
-});
+client.PREFIX = PREFIX;
 
-///// Message 
- 
-client.on("message", msg => {
-  if (msg.content.startsWith(`${PREFIX}erthilia`)) msg.channel.send("Erthilia est actuellement en cours de développement!");
-});
+client.commands = new Collection()
+client.commands.set("erthilia", require("./commands/erthilia.js"));
+client.commands.set("eval", require("./commands/eval.js"));
+
+
+client.on("ready", () => require("./events/ready.js")(client));
+client.on("message", msg => require("./events/message.js")(client, msg));
+client.on("guildMemberAdd", member => require("./events/guildMemberAdd.js")(client, member));
 
 client.login(TOKEN);
+client.on("error", console.error);
+client.on("warn", console.warn);
